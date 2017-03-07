@@ -158,7 +158,7 @@ Target "NBench" <| fun _ ->
     DotNetCli.RunCommand
         (fun p ->
             { p with
-                TimeOut = TimeSpan.FromMinutes 15.0 })
+                TimeOut = TimeSpan.FromMinutes 25.0 })
         (sprintf "%s %s output-directory=\"%s\" concurrent=\"%b\" trace=\"%b\"" netCoreNbenchRunner netCoreAssembly outputPerfTests true true)
 
 Target "CopyOutput" (fun _ ->    
@@ -210,8 +210,7 @@ Target "CreateNuget" (fun _ ->
                     Project = proj
                     Configuration = configuration
                     AdditionalArgs = ["--include-symbols"]
-                    OutputPath = outputNuGet
-                    VersionSuffix = version })
+                    OutputPath = outputNuGet })
         )
 )
 
